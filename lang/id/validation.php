@@ -1,0 +1,38 @@
+<?php
+
+return [
+    'accepted' => ':attribute harus diterima.',
+    'active_url' => ':attribute bukan URL yang valid.',
+    'after' => ':attribute harus tanggal setelah :date.',
+    'array' => ':attribute harus berupa daftar.',
+    'before' => ':attribute harus tanggal sebelum :date.',
+    'boolean' => ':attribute harus bernilai benar atau salah.',
+    'confirmed' => 'Konfirmasi :attribute tidak sesuai.',
+    'date' => ':attribute bukan tanggal yang valid.',
+    'email' => ':attribute harus berupa alamat email yang valid.',
+    'exists' => ':attribute yang dipilih tidak ditemukan.',
+    'file' => ':attribute harus berupa file.',
+    'image' => ':attribute harus berupa gambar.',
+    'in' => ':attribute yang dipilih tidak valid.',
+    'integer' => ':attribute harus berupa angka bulat.',
+    'max' => [
+        'array' => ':attribute tidak boleh lebih dari :max item.',
+        'file' => ':attribute tidak boleh lebih besar dari :max kilobita.',
+        'numeric' => ':attribute tidak boleh lebih besar dari :max.',
+        'string' => ':attribute tidak boleh lebih panjang dari :max karakter.',
+    ],
+    'mimes' => ':attribute harus memiliki tipe: :values.',
+    'min' => [
+        'array' => ':attribute harus memiliki minimal :min item.',
+        'file' => ':attribute harus berukuran minimal :min kilobita.',
+        'numeric' => ':attribute tidak boleh kurang dari :min.',
+        'string' => ':attribute harus minimal :min karakter.',
+    ],
+    'numeric' => ':attribute harus berupa angka.',
+    'required' => ':attribute wajib diisi.',
+    'required_if' => ':attribute wajib diisi.',
+    'same' => ':attribute harus sama dengan :other.',
+    'string' => ':attribute harus berupa teks.',
+    'unique' => ':attribute sudah digunakan.',
+    'url' => ':attribute harus berupa URL yang valid.',
+];

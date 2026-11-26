@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --color-navy: #18324b;
+    --color-navy-soft: #274765;
+    --color-teal: #0f8b8d;
+    --color-teal-dark: #0a6f71;
+    --color-sky-brand: #3d78a8;
+    --color-canvas: #f4f8fa;
+    --color-ink: #22313f;
+    --color-warning: #d69e36;
+    --color-danger: #b94a48;
+}
+
+@layer base {
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        margin: 0;
+        background: var(--color-canvas);
+        color: var(--color-ink);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+    }
+    button, input, select, textarea { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: #bde7e5; color: #18324b; }
+    :focus-visible { outline: 3px solid rgba(15, 139, 141, .35); outline-offset: 3px; }
+}
+
+@layer components {
+    .surface { @apply rounded-2xl border border-slate-200/80 bg-white shadow-[0_8px_30px_rgba(24,50,75,.05)]; }
+    .label { @apply mb-1.5 block text-sm font-semibold text-navy; }
+    .input { @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-ink transition placeholder:text-slate-400 hover:border-slate-400 focus:border-teal focus:outline-none focus:ring-4 focus:ring-teal/10 disabled:cursor-not-allowed disabled:bg-slate-100; }
+    .nav-link { @apply flex items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-medium text-slate-300 transition hover:bg-white/10 hover:text-white; }
+    .nav-link-active { @apply bg-white/10 text-white shadow-[inset_3px_0_0_#2dd4bf]; }
+    .side-link { @apply flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-teal/5 hover:text-teal-dark; }
+    .side-link-active { @apply bg-teal/10 font-semibold text-teal-dark; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
