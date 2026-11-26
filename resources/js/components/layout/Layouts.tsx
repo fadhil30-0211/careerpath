@@ -41,10 +41,12 @@ export function PublicLayout() {
                 <button className="rounded-xl p-2 text-navy transition hover:bg-canvas active:scale-95 md:hidden" onClick={() => setOpen(!open)} aria-label={open ? 'Tutup menu' : 'Buka menu'} aria-expanded={open}><span className={`block transition-transform duration-300 ${open ? 'rotate-90' : ''}`}>{open ? <X /> : <Menu />}</span></button>
             </div>
             <div className={`mobile-menu md:hidden ${open ? 'mobile-menu-open' : ''}`} aria-hidden={!open} inert={!open}>
-                <nav className="mobile-menu-inner space-y-1 border-t border-slate-100 bg-white p-4">
-                    {links.map(([to, label]) => <Link key={to} to={to} onClick={() => setOpen(false)} className="block rounded-xl px-3 py-3 text-sm font-semibold text-navy transition hover:bg-canvas active:bg-teal/5">{label}</Link>)}
-                    <Link to={user ? (user.role === 'admin' ? '/admin' : '/dashboard') : '/login'} onClick={() => setOpen(false)} className="mt-3 block rounded-xl bg-teal px-3 py-3 text-center text-sm font-bold text-white transition hover:bg-teal-dark active:scale-[.99]">{user ? (user.role === 'admin' ? 'Panel Admin' : 'Dasbor Saya') : 'Masuk ke CareerPath'}</Link>
-                </nav>
+                <div className="mobile-menu-inner">
+                    <nav className="space-y-1 border-t border-slate-100 bg-white p-4">
+                        {links.map(([to, label]) => <Link key={to} to={to} onClick={() => setOpen(false)} className="block rounded-xl px-3 py-3 text-sm font-semibold text-navy transition hover:bg-canvas active:bg-teal/5">{label}</Link>)}
+                        <Link to={user ? (user.role === 'admin' ? '/admin' : '/dashboard') : '/login'} onClick={() => setOpen(false)} className="mt-3 block rounded-xl bg-teal px-3 py-3 text-center text-sm font-bold text-white transition hover:bg-teal-dark active:scale-[.99]">{user ? (user.role === 'admin' ? 'Panel Admin' : 'Dasbor Saya') : 'Masuk ke CareerPath'}</Link>
+                    </nav>
+                </div>
             </div>
         </header>
         <main><PageTransition><Outlet /></PageTransition></main>
@@ -85,7 +87,7 @@ export function AppLayout() {
                 <div className="hidden items-center gap-2 text-xs text-slate-500 lg:flex"><span className="h-2 w-2 rounded-full bg-emerald-500" />Sesi aktif · Data profil tersimpan</div>
                 <div className="ml-auto flex items-center gap-3"><div className="hidden text-right sm:block"><p className="text-sm font-bold text-navy">{user?.profile?.display_name || user?.name}</p><p className="text-xs text-slate-500">Akun pengguna</p></div><span className="grid h-10 w-10 place-items-center rounded-full bg-teal/10 text-sm font-extrabold text-teal">{(user?.profile?.display_name || user?.name || 'CP').slice(0, 2).toUpperCase()}</span></div>
             </header>
-            <main className="mx-auto max-w-[1440px] p-5 lg:p-8"><Outlet /></main>
+            <main className="mx-auto max-w-[1440px] p-5 lg:p-8"><PageTransition><Outlet /></PageTransition></main>
         </div>
     </div>;
 }

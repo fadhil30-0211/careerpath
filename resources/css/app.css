@@ -42,6 +42,9 @@
     .side-link { @apply flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-600 transition duration-200 hover:bg-teal/5 hover:text-teal-dark active:scale-[.98]; }
     .side-link-active { @apply bg-teal/10 font-semibold text-teal-dark; }
     .hover-lift { transition: transform 300ms var(--ease-smooth), border-color 300ms ease, box-shadow 300ms ease; }
+    .mobile-menu { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 300ms var(--ease-smooth), opacity 200ms ease; }
+    .mobile-menu-open { grid-template-rows: 1fr; opacity: 1; }
+    .mobile-menu-inner { min-height: 0; overflow: hidden; }
 }
 
 @keyframes page-in {
@@ -102,7 +105,8 @@
 .hero-visual { animation: hero-in 700ms var(--ease-smooth) 120ms backwards; }
 .ambient-float { animation: ambient-float 9s ease-in-out infinite; }
 .ambient-float-delayed { animation-delay: -4s; }
-.progress-fill { transform-origin: left; animation: progress-in 850ms var(--ease-smooth) 140ms backwards; }
+.progress-fill { transform-origin: left; transition: width 500ms var(--ease-smooth); animation: progress-in 850ms var(--ease-smooth) 140ms backwards; }
+.score-ring { animation: reveal-up 500ms var(--ease-smooth) backwards; }
 .results-enter { animation: page-in 300ms var(--ease-smooth) both; }
 .tab-panel { animation: tab-in 260ms var(--ease-smooth) both; }
 .modal-backdrop { animation: fade-in 200ms ease-out both; }
@@ -111,9 +115,6 @@
 .loading-enter { animation: fade-in 240ms ease-out both; }
 .empty-enter { animation: reveal-up 380ms var(--ease-smooth) both; }
 .auth-panel { animation: page-in 500ms var(--ease-smooth) both; }
-.mobile-menu { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 300ms var(--ease-smooth), opacity 200ms ease; }
-.mobile-menu-open { grid-template-rows: 1fr; opacity: 1; }
-.mobile-menu-inner { min-height: 0; overflow: hidden; }
 
 @media (hover: hover) {
     .hover-lift:hover { transform: translateY(-4px); border-color: rgba(15, 139, 141, .3); box-shadow: 0 16px 35px rgba(24, 50, 75, .09); }

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ButtonHTMLAttributes, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes, type TextareaHTMLAttributes } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type ButtonHTMLAttributes, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes, type TextareaHTMLAttributes } from 'react';
 import { AlertCircle, ArrowRight, CheckCircle2, Compass, LoaderCircle, Search, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { classNames } from '../lib/api';
@@ -43,6 +43,14 @@ export function Reveal({ children, className, delay = 0 }: { children: ReactNode
 
 export function PageTransition({ children }: { children: ReactNode }) {
     const { pathname } = useLocation();
+    useLayoutEffect(() => {
+        const root = document.documentElement;
+        const previousBehavior = root.style.scrollBehavior;
+        if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+        root.style.scrollBehavior = 'auto';
+        window.scrollTo(0, 0);
+        root.style.scrollBehavior = previousBehavior;
+    }, [pathname]);
     return <div key={pathname} className="page-transition">{children}</div>;
 }
 
